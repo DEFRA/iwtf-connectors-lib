@@ -37,7 +37,7 @@ jest.mock('redlock', () => {
 describe('DistributedLock', () => {
   beforeEach(jest.clearAllMocks)
 
-  it('only allows a single process to obtain a lock', async done => {
+  it('only allows a single process to obtain a lock', async () => {
     let lock1ReleaseTime
     let lock2ObtainTime
     process.nextTick(async () => {
@@ -54,24 +54,19 @@ describe('DistributedLock', () => {
     })
     process.nextTick(async () => {
       const lock = new DistributedLock('test-process', 50)
-      try {
-        await expect(
-          lock.obtainAndExecute({
-            onLockObtained: async () => {
-              lock2ObtainTime = Date.now()
-            },
-            maxWaitSeconds: -1
-          })
-        ).resolves.toBeUndefined()
-        expect(lock2ObtainTime).toBeGreaterThanOrEqual(lock1ReleaseTime)
-        done()
-      } catch (e) {
-        done(e)
-      }
+      await expect(
+        lock.obtainAndExecute({
+          onLockObtained: async () => {
+            lock2ObtainTime = Date.now()
+          },
+          maxWaitSeconds: -1
+        })
+      ).resolves.toBeUndefined()
+      expect(lock2ObtainTime).toBeGreaterThanOrEqual(lock1ReleaseTime)
     })
   })
 
-  it('allows two concurrent locks with different names', async done => {
+  it('allows two concurrent locks with different names', async () => {
     let lock1ReleaseTime
     let lock2ObtainTime
     process.nextTick(async () => {
@@ -88,21 +83,16 @@ describe('DistributedLock', () => {
     })
     process.nextTick(async () => {
       const lock = new DistributedLock('test-process2', 50)
-      try {
-        await expect(
-          lock.obtainAndExecute({
-            onLockObtained: async () => {
-              lock2ObtainTime = Date.now()
-              await new Promise(resolve => setTimeout(resolve, 200))
-            },
-            maxWaitSeconds: -1
-          })
-        ).resolves.toBeUndefined()
-        expect(lock2ObtainTime).toBeLessThan(lock1ReleaseTime)
-        done()
-      } catch (e) {
-        done(e)
-      }
+      await expect(
+        lock.obtainAndExecute({
+          onLockObtained: async () => {
+            lock2ObtainTime = Date.now()
+            await new Promise(resolve => setTimeout(resolve, 200))
+          },
+          maxWaitSeconds: -1
+        })
+      ).resolves.toBeUndefined()
+      expect(lock2ObtainTime).toBeLessThan(lock1ReleaseTime)
     })
   })
 
@@ -121,7 +111,7 @@ describe('DistributedLock', () => {
     await expect(lock.release()).resolves.toBeUndefined()
   })
 
-  it('configures the connection to redis based on environment variables', async done => {
+  it('configures the connection to redis based on environment variables', async () => {
     jest.isolateModules(async () => {
       process.env.REDIS_HOST = 'test-instance'
       process.env.REDIS_PORT = 1234
@@ -137,7 +127,6 @@ describe('DistributedLock', () => {
         password: 'open-sesame',
         tls: {}
       })
-      done()
     })
   })
 

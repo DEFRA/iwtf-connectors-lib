@@ -1,7 +1,7 @@
 {
   "name": "@defra-fish/connectors-lib",
   "version": "1.17.0",
-  "description": "Shared connectors",
+  "description": "Connectors library for GAFL service",
   "type": "module",
   "engines": {
     "node": ">=14"
@@ -108,8 +108,10 @@
         "statements": 90
       }
     },
+    "projects": [
+      "<rootDir>"
+    ],
     "testEnvironment": "node",
-    "testRunner": "jest-circus/runner",
-    "silent": true
+    "testRunner": "jest-circus/runner"
   }
 }
