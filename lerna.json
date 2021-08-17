@@ -1,0 +1,35 @@
+{
+  "packages": [
+    "*"
+  ],
+  "version": "1.17.0",
+  "npmClient": "npm",
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "command": {
+    "bootstrap": {},
+    "version": {
+      "allowBranch": [
+        "master",
+        "develop"
+      ],
+      "message": "chore(release): publish %s"
+    },
+    "publish": {
+      "message": "chore(release): publish %s",
+      "allowBranch": [
+        "master",
+        "develop"
+      ],
+      "ignoreChanges": [
+        ".*",
+        "*.md",
+        "node_modules/*",
+        "coverage/*",
+        "scripts/*",
+        "sonar-project.properties"
+      ]
+    }
+  }
+}
