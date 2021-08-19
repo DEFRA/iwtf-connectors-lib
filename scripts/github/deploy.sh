@@ -70,7 +70,7 @@ mv package.json.new package.json
 
 # Generate changelog information for changes since the last tag
 echo "Generating changelog updates for all changes between ${PREVIOUS_VERSION} and ${NEW_VERSION}"
-lerna-changelog --from "${PREVIOUS_VERSION}" --to "${NEW_VERSION}" | cat - CHANGELOG.md > CHANGELOG.new && mv CHANGELOG.new CHANGELOG.md
+autochangelog -p
 git commit -a --amend --no-edit --no-verify
 
 # Push new tag, updated changelog and package metadata to the remote
