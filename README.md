@@ -1,8 +1,26 @@
+[![Build Status](https://github.com/defra/iwtf-connectors-lib/workflows/build.yml/badge.svg)](https://github.com/defra/iwtf-connectors-lib/actions)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=alert_status)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=security_rating)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=ncloc)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=bugs)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=code_smells)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=sqale_index)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_iwtf-connectors-lib&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=DEFRA_iwtf-connectors-lib)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![GitHub issues](https://img.shields.io/github/issues/DEFRA/iwtf-connectors-lib.svg)](https://github.com/DEFRA/iwtf-connectors-lib/issues/)
+[![Code size](https://img.shields.io/github/languages/code-size/DEFRA/iwtf-connectors-lib.svg)]()
+[![Repo size](https://img.shields.io/github/repo-size/DEFRA/iwtf-connectors-lib.svg)]()
+[![Licence](https://img.shields.io/badge/licence-OGLv3-blue.svg)](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3)
+
 # Rod Licensing - Connectors Lib
 
 Provides connectivity to the resources/infrastructure used in the rod licensing services
 
-# Environment variables
+## Environment variables
 
 | name                                | description                                                        | required | default         | valid                                                                                          | notes                                                                       |
 | ----------------------------------- | ------------------------------------------------------------------ | :------: | --------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -20,6 +38,34 @@ Provides connectivity to the resources/infrastructure used in the rod licensing 
 | GOV_PAY_APIKEY                      | GOV pay access identifier                                          |   yes    |                 |                                                                                                |                                                                             |
 | GOV_PAY_REQUEST_TIMEOUT_MS          | Timeout in milliseconds for API requests                           |    no    | 10000           |                                                                                                |                                                                             |
 
-# Prerequisites
+## Prerequisites
 
-See [main project documentation](../../README.md).
+- Node v14.13+
+- Docker v18.06.0+
+
+## Cloning
+
+Cloning via SSH from behind a firewall which blocks port 22:
+
+```
+git clone ssh://git@ssh.github.com:443/DEFRA/iwtf-connectors-lib
+```
+## Contributing to this project
+
+Please read our [contribution guidelines](CONTRIBUTING.md)
+
+## License
+
+THIS INFORMATION IS LICENSED UNDER THE CONDITIONS OF THE OPEN GOVERNMENT LICENCE found at:
+
+http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3
+
+The following attribution statement MUST be cited in your products and applications when using this information.
+
+> Contains public sector information licensed under the Open Government license v3
+
+### About the license
+
+The Open Government Licence (OGL) was developed by the Controller of Her Majesty's Stationery Office (HMSO) to enable information providers in the public sector to license the use and re-use of their information under a common open licence.
+
+It is designed to encourage use and re-use of information freely and flexibly, with only a few conditions.
