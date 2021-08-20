@@ -83,7 +83,7 @@ git push origin "${NEW_VERSION}"
 
 # Publish packages to npm
 echo "Publishing latest packages to npm"
-npm publish
+npm publish --access public
 
 # If we've pushed a new release into master and it is not a hotfix/patch, then merge the changes back to develop
 if [ "${BRANCH}" == "master" ] && [ "${RELEASE_TYPE}" != "patch" ]; then
