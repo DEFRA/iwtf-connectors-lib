@@ -16,7 +16,7 @@ echo "Executing deployment - BRANCH=${BRANCH}, COMMIT_MESSAGE=${COMMIT_MESSAGE},
 
 # Use the npm semver package to help determine release versions
 echo "Installing semver"
-npm i -g semver autochangelog
+npm i -g semver auto-changelog
 
 echo "Checking out target branch"
 git fetch --unshallow
@@ -70,8 +70,8 @@ mv package.json.new package.json
 
 # Generate changelog information for changes since the last tag
 echo "Generating changelog updates for all changes between ${PREVIOUS_VERSION} and ${NEW_VERSION}"
-autochangelog -p
-git commit -a --amend --no-edit --no-verify
+auto-changelog -p
+git commit -a --no-edit --no-verify -m "chore(release): publish ${NEW_VERSION}"
 
 # Push new tag, updated changelog and package metadata to the remote
 echo "Pushing new release to the remote"
