@@ -16,7 +16,7 @@ echo "Executing deployment - BRANCH=${BRANCH}, COMMIT_MESSAGE=${COMMIT_MESSAGE},
 
 # Use the npm semver package to help determine release versions
 echo "Installing semver"
-npm i -g semver lerna lerna-changelog 
+npm i -g semver auto-changelog
 
 echo "Checking out target branch"
 git fetch --unshallow
@@ -65,12 +65,13 @@ fi
 
 echo "Updating version from ${PREVIOUS_VERSION} to ${NEW_VERSION}"
 # Update package files versions, project inter-dependencies and lerna.json with new version number
-lerna version "${NEW_VERSION}" --yes --no-push --force-publish --exact
+jq '.version=$NEW_VERSION' --arg NEW_VERSION "$NEW_VERSION"  package.json > package.json.new
+mv package.json.new package.json
 
 # Generate changelog information for changes since the last tag
 echo "Generating changelog updates for all changes between ${PREVIOUS_VERSION} and ${NEW_VERSION}"
-lerna-changelog --from "${PREVIOUS_VERSION}" --to "${NEW_VERSION}" | cat - CHANGELOG.md > CHANGELOG.new && mv CHANGELOG.new CHANGELOG.md
-git commit -a --amend --no-edit --no-verify
+auto-changelog -p
+git commit -a --no-edit --no-verify -m "chore(release): publish ${NEW_VERSION}"
 
 # Push new tag, updated changelog and package metadata to the remote
 echo "Pushing new release to the remote"
@@ -82,7 +83,7 @@ git push origin "${NEW_VERSION}"
 
 # Publish packages to npm
 echo "Publishing latest packages to npm"
-lerna publish --registry=http://registry.npmjs.org/ from-git --yes --pre-dist-tag rc
+npm publish --access public
 
 # If we've pushed a new release into master and it is not a hotfix/patch, then merge the changes back to develop
 if [ "${BRANCH}" == "master" ] && [ "${RELEASE_TYPE}" != "patch" ]; then
