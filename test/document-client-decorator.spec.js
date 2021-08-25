@@ -1,5 +1,5 @@
 import AWSSdk from 'aws-sdk'
-import AWS from '../aws.js'
+import AWS from '../src/aws.js'
 const { docClient } = AWS()
 
 describe('document client decorations', () => {
