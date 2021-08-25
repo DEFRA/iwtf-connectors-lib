@@ -1,6 +1,6 @@
 {
   "name": "@defra-fish/connectors-lib",
-  "version": "v1.18.0-rc.102-babel-test",
+  "version": "v1.18.0-rc.102-babel-test-2",
   "description": "Connectors library for GAFL service",
   "type": "module",
   "engines": {
@@ -16,11 +16,11 @@
   "license": "SEE LICENSE IN LICENSE",
   "main": "src/index.js",
   "directories": {
-    "lib": "src",
+    "lib": "dist",
     "test": "test"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "repository": {
     "type": "git",
