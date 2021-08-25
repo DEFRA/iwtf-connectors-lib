@@ -1,4 +1,4 @@
-import { DistributedLock } from '../distributed-lock.js'
+import { DistributedLock } from '../src/distributed-lock.js'
 
 jest.mock('ioredis')
 

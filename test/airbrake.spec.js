@@ -28,7 +28,7 @@ describe('airbrake', () => {
       try {
         delete process.env.AIRBRAKE_HOST
         delete process.env.AIRBRAKE_PROJECT_KEY
-        const airbrake = require('../airbrake.js')
+        const airbrake = require('../src/airbrake.js')
         expect(airbrake.initialise()).toEqual(false)
         console.error(new Error('Test'))
         await expect(airbrake.flush()).resolves.toBeUndefined()
@@ -46,7 +46,7 @@ describe('airbrake', () => {
       try {
         process.env.AIRBRAKE_HOST = 'https://test-airbrake.com'
         process.env.AIRBRAKE_PROJECT_KEY = '123'
-        const airbrake = require('../airbrake.js')
+        const airbrake = require('../src/airbrake.js')
         expect(airbrake.initialise()).toEqual(true)
         const testError = new Error('Test')
         console.error(testError)
@@ -66,7 +66,7 @@ describe('airbrake', () => {
         process.env.AIRBRAKE_HOST = 'https://test-airbrake.com'
         process.env.AIRBRAKE_PROJECT_KEY = '123'
         process.env.name = 'Test PM2 process name'
-        const airbrake = require('../airbrake.js')
+        const airbrake = require('../src/airbrake.js')
         expect(airbrake.initialise()).toEqual(true)
 
         console.error('An error')
@@ -116,7 +116,7 @@ describe('airbrake', () => {
         try {
           process.env.AIRBRAKE_HOST = 'https://test-airbrake.com'
           process.env.AIRBRAKE_PROJECT_KEY = '123'
-          const airbrake = require('../airbrake.js')
+          const airbrake = require('../src/airbrake.js')
           expect(airbrake.initialise()).toEqual(true)
 
           console.error(...input)
@@ -145,7 +145,7 @@ describe('airbrake', () => {
         const processExitSpy = jest.spyOn(process, 'exit').mockImplementation(jest.fn())
         process.env.AIRBRAKE_HOST = 'https://test-airbrake.com'
         process.env.AIRBRAKE_PROJECT_KEY = '123'
-        const airbrake = require('../airbrake.js')
+        const airbrake = require('../src/airbrake.js')
         expect(airbrake.initialise()).toEqual(true)
 
         const testError = new Error('Test error')

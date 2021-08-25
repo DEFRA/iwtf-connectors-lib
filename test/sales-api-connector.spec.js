@@ -1,4 +1,4 @@
-import * as salesApi from '../sales-api-connector.js'
+import * as salesApi from '../src/sales-api-connector.js'
 import fetch from 'node-fetch'
 
 jest.mock('node-fetch')

@@ -1,4 +1,4 @@
-import * as govUkPayApi from '../govuk-pay-api.js'
+import * as govUkPayApi from '../src/govuk-pay-api.js'
 jest.mock('node-fetch')
 const fetch = require('node-fetch')
 
