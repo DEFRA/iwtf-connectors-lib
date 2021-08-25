@@ -29,7 +29,6 @@ jobs:
           node-version: '14.x'
       - name: Install dependencies
         run: npm ci
-        env:
       - name: Run tests
         run: npm run test -- --forceExit
       - name: Fix code coverage paths
