@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       TZ: Europe/London
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -29,7 +30,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Run tests
         run: npm run test -- --forceExit
       - name: Fix code coverage paths
@@ -45,8 +45,6 @@ jobs:
         run: npm run build
       - name: Publish npm
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   new-version:
     name: new-version
     runs-on: ubuntu-18.04
