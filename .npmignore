@@ -31,3 +31,6 @@ node_modules/
 **/__mocks__/
 **/*.spec.js
 **/*.test.js
+
+/src
+/test
