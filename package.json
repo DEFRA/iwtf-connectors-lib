@@ -51,7 +51,7 @@
     "jest-circus": "^26.6.3",
     "lint-staged": "^11.0.0",
     "prettier-standard": "^16.4.1",
-    "simple-oauth2": "^4.2.0",
+    "simple-oauth2": "^5.0.0",
     "standard": "^16.0.3"
   },
   "dependencies": {
